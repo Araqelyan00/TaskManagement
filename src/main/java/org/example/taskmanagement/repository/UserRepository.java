@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface UserRepository  extends JpaRepository<User, Integer> {
     Optional<User> findByEmail(String email);
-    List<User> findTop10ByNameOrderByIdDesc(String name);
+//    List<User> findTop10ByNameOrderByIdDesc(String name);
 }
