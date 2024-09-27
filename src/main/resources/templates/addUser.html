@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add User</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>Add User</h1>
+</header>
+<main>
+  <form action="/users/add" method="post" enctype="multipart/form-data">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+      <label for="surname">Surname:</label>
+      <input type="text" id="surname" name="surname" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <div class="account-type">
+      <input type="radio" value="USER" id="radioTwo" name="userType" checked/>
+      <label for="radioTwo" class="radio">USER</label>
+
+      <input type="radio" value="ADMIN" id="radioOne" name="userType" />
+      <label for="radioOne" class="radio">MANAGER</label>
+    </div>
+    <div>
+      <label for="file">Profile Picture:</label>
+      <input type="file" id="file" name="file">
+    </div>
+    <div th:if="${error}">
+      <p th:text="${error}"></p>
+    </div>
+    <button type="submit">Add User</button>
+  </form>
+</main>
+<footer>
+  <p>&copy; 2024 Task Management</p>
+</footer>
+</body>
+</html>

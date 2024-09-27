@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Task</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>Add Task</h1>
+</header>
+<main>
+  <form action="/task/add" method="post">
+    <div>
+      <label for="taskName">Title:</label>
+      <input type="text" id="taskName" name="name" required>
+    </div>
+    <div>
+      <label for="taskDescription">Task Description:</label>
+      <textarea id="taskDescription" name="description" required></textarea>
+    </div>
+    <div>
+      <label for="taskName">Deadline:</label>
+      <input type="date" id="deadline" name="deadline" required>
+    </div>
+    <div>
+      <label for="assignedUser">Status:</label>
+      <select id="status" name="status">
+        <option value="To do">To do</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Testing">Testing</option>
+        <option value="Done">Done</option>
+      </select>
+    </div>
+    <div>
+      <label for="assignedUser">Assign to:</label>
+      <select id="assignedUser" name="user.id">
+        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+      </select>
+    </div>
+    <button type="submit">Add Task</button>
+  </form>
+</main>
+<footer>
+  <p>&copy; 2024 Task Management</p>
+</footer>
+</body>
+</html>

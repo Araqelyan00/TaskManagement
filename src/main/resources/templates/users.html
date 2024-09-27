@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Users</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>All Users</h1>
+  <nav>
+    <a href="/user">User Home</a>
+    <a href="/task/add">Add Task</a>
+    <a href="/tasks">Tasks</a>
+    <a href="/users/add">Add User</a>
+  </nav>
+</header>
+<main>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+      <td th:text="${user.id}"></td>
+      <td th:text="${user.username}"></td>
+      <td th:text="${user.email}"></td>
+      <td>
+        <a th:href="@{'/users/delete?id=' + ${user.id}}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</main>
+<footer>
+  <p>&copy; 2024 Task Management</p>
+</footer>
+</body>
+</html>
