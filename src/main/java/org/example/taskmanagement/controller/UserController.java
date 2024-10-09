@@ -33,7 +33,8 @@ public class UserController {
     }
 
     @GetMapping("/users/add")
-    public String addUserPage() {
+    public String addUserPage(Model model) {
+        model.addAttribute("user", new User());
         return "addUser";
     }
 

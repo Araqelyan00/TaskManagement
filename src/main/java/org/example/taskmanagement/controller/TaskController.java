@@ -26,14 +26,15 @@ public class TaskController {
     private final TaskService taskService;
     private final UserService userService;
 
-    @GetMapping("/task/add")
+    @GetMapping("/tasks/add")
     public String addTaskPage(ModelMap modelMap) {
         List<User> users = userService.findAllUsers();
         modelMap.addAttribute("users", users);
+        modelMap.addAttribute("task", new Task()); // Add this line to ensure the task object is passed to the view
         return "addTask";
     }
 
-    @PostMapping("/task/add")
+    @PostMapping("/tasks/add")
     public String addTask(@ModelAttribute Task task) {
         taskService.saveNewTask(task);
         return "redirect:/tasks";
@@ -43,7 +44,7 @@ public class TaskController {
     public String tasksPage(@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size, ModelMap modelMap, @AuthenticationPrincipal CurrentUser currentUser) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(5);
-        Page<Task> tasksByUserRole = taskService.findTasksByUserRole(currentUser.getUser(), PageRequest.of(currentPage-1, pageSize));
+        Page<Task> tasksByUserRole = taskService.findTasksByUserRole(currentUser.getUser(), PageRequest.of(currentPage - 1, pageSize));
         modelMap.addAttribute("tasks", tasksByUserRole);
         int totalPages = tasksByUserRole.getTotalPages();
         if (totalPages > 0) {
@@ -59,6 +60,4 @@ public class TaskController {
         taskService.changeUserTask(taskId, userId);
         return "redirect:/tasks";
     }
-
-    // task ?
 }

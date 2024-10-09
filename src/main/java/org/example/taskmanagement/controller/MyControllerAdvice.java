@@ -1,6 +1,6 @@
 package org.example.taskmanagement.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import org.example.taskmanagement.entity.User;
 import org.example.taskmanagement.security.CurrentUser;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

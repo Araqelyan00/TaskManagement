@@ -3,10 +3,8 @@ package org.example.taskmanagement.controller;
 import org.example.taskmanagement.entity.User;
 import org.example.taskmanagement.entity.UserType;
 import org.example.taskmanagement.security.CurrentUser;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +18,7 @@ public class MainController {
     }
 
     @GetMapping("/loginSuccess")
-    public String loginSuccessPage(@AuthenticationPrincipal CurrentUser currentUser) {
+    public String loginSuccess(@AuthenticationPrincipal CurrentUser currentUser) {
         if (currentUser != null) {
             User user = currentUser.getUser();
             if (user.getRole().equals(UserType.MANAGER)){
