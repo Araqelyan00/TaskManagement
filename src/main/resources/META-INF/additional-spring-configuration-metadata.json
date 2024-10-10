@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "main.dashboard",
+      "type": "java.lang.String",
+      "description": "Description for main.dashboard."
+    },
+    {
+      "name": "menu.tasks",
+      "type": "java.lang.String",
+      "description": "Description for menu.tasks."
+    }
+  ] }
