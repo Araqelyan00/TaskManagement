@@ -45,7 +45,7 @@ public class UserService {
             String fileName = System.currentTimeMillis()+ "_" + file.getOriginalFilename();
             File newFile = new File(folderPath + File.separator + fileName);
             file.transferTo(newFile);
-            user.setPicURL(fileName);
+            user.setPicUrl(fileName);
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);

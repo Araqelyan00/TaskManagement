@@ -10,4 +10,5 @@ public class ManagerController {
     public String managerHome() {
         return "manager";
     }
+
 }

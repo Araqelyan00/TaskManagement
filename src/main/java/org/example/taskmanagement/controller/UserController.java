@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping("/users/add")
-    public String addUser(@ModelAttribute User user, @RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
+    public String addUser(@ModelAttribute User user, @RequestParam("userImage") MultipartFile file, ModelMap modelMap) throws IOException {
 
             Optional<User> byEmail = userService.findByEmail(user.getEmail());
             if (byEmail.isPresent()) {

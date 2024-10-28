@@ -21,13 +21,13 @@ public class MainController {
     public String loginSuccess(@AuthenticationPrincipal CurrentUser currentUser) {
         if (currentUser != null) {
             User user = currentUser.getUser();
-            if (user.getRole().equals(UserType.MANAGER)){
-                return "redirect:/manager";
-            } else if (user.getRole().equals(UserType.USER)) {
-                return "redirect:/user";
+                if (user.getRole() == UserType.MANAGER) {
+                    return "redirect:/manager";
+                } else if (user.getRole() == UserType.USER) {
+                    return "redirect:/user";
+                }
             }
-        }
-        return "redirect:/";
+        return "redirect:/main";
     }
 
     @GetMapping("/accessDenied")
